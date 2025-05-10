@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 exports.register = async (req, res) => {
   try {
-    const { username, email, password, favoriteTeamId } = req.body;
+    const {userId, username, email, password, favoriteTeamId } = req.body;
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -15,6 +15,7 @@ exports.register = async (req, res) => {
 
     // Create and save user
     const newUser = new User({
+      userId,
       username,
       email,
       password: hashedPassword,
