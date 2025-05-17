@@ -25,14 +25,14 @@ app.use((req, res, next) => {
   next();
 });
 
-// Test route
-app.get('/test', (req, res) => {
-  res.json({ message: "Test route working" });
-});
+
 
 // Routes
 const adminRoutes = require('./Routes/AdminRoutes');
 app.use('/api/admin', adminRoutes);
+
+const reviewRoutes = require('./Routes/ReviewRoutes');
+app.use('/api/review', reviewRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
